@@ -28,7 +28,8 @@ export default function ContactPage() {
         setStatus("Failed to send message. Please try again.")
       }
     } catch (error) {
-      setStatus("An error occurred. Please try again later.")
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      setStatus(`An error occurred: ${errorMessage}. Please try again later.`)
     }
   }
 

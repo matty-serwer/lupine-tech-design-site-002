@@ -32,8 +32,13 @@ export async function POST(request: Request) {
       {status: 200}
     )
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Failed to process request';
     return NextResponse.json(
-      {error: 'Failed to process request'},
+      {
+        error: 'Failed to process request',
+        detail: errorMessage
+      },
+
       {status: 500}
     )
   }
